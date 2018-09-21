@@ -8,7 +8,7 @@ class GoogleDirections
 
   attr_reader :status, :doc, :xml, :origin, :destination, :options
 
-  @@base_url = 'http://maps.googleapis.com/maps/api/directions/xml'
+  @@base_url = 'https://maps.googleapis.com/maps/api/directions/xml'
 
   @@default_options = {
     :language => :en,
@@ -35,7 +35,7 @@ class GoogleDirections
   # an example URL to be generated
   #http://maps.google.com/maps/api/directions/xml?origin=St.+Louis,+MO&destination=Nashville,+TN&sensor=false&key=ABQIAAAAINgf4OmAIbIdWblvypOUhxSQ8yY-fgrep0oj4uKpavE300Q6ExQlxB7SCyrAg2evsxwAsak4D0Liiv
 
-  def drive_time_in_minutes
+  def travel_time_in_minutes
     if @status != "OK"
       drive_time = 0
     else
@@ -74,7 +74,7 @@ class GoogleDirections
   end
 
   def public_url
-    "http://maps.google.com/maps?saddr=#{transcribe(@origin)}&daddr=#{transcribe(@destination)}&hl=#{@options[:language]}&ie=UTF8"
+    "https://maps.google.com/maps?saddr=#{transcribe(@origin)}&daddr=#{transcribe(@destination)}&hl=#{@options[:language]}&ie=UTF8"
   end
 
   def steps

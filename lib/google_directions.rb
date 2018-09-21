@@ -44,6 +44,15 @@ class GoogleDirections
     end
   end
 
+  def travel_time_in_seconds
+    if @status != "OK"
+      drive_time = 0
+    else
+      drive_time = @doc.css("duration value").last.text
+      drive_time
+    end
+  end
+
   # the distance.value field always contains a value expressed in meters.
   def distance
     return @distance if @distance

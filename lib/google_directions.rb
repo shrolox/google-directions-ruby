@@ -49,7 +49,7 @@ class GoogleDirections
       drive_time = 0
     else
       drive_time = @doc.css("duration value").last.text
-      drive_time
+      drive_time.to_d
     end
   end
 
